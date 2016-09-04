@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.1
+- Fixed SSL Pinning not working for postJson method for ios
+- Fixed version number in plugin.xml
+
 ## v1.1.0
 
 - Fixed the body of errors not being returned in iOS
