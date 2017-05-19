@@ -17,6 +17,8 @@ import android.util.Log;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 
+import java.io.UnsupportedEncodingException;
+
 import com.synconset.CordovaHttpHelpers;
 
 public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnable {
