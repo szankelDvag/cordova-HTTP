@@ -46,11 +46,18 @@ public abstract class CordovaHttp {
     private Map<String, String> headers;
     private CallbackContext callbackContext;
 
-    public CordovaHttp() {}
+    public CordovaHttp()
 
     public CordovaHttp(String urlString, String formUrlEncoded, Map<String, String> headers, CallbackContext callbackContext) {
         this.urlString = urlString;
         this.formUrlEncoded = formUrlEncoded;
+        this.headers = headers;
+        this.callbackContext = callbackContext;
+    }
+
+    public CordovaHttp(String urlString, JSONObject jsonObj, Map<String, String> headers, CallbackContext callbackContext) {
+        this.urlString = urlString;
+        this.jsonObject = jsonObj;
         this.headers = headers;
         this.callbackContext = callbackContext;
     }
