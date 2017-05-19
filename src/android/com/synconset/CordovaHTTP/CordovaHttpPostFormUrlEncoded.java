@@ -19,8 +19,8 @@ import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 
 public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnable {
 
-    public CordovaHttpPostFormUrlEncoded(String urlString, JSONObject jsonObj, Map<String, String> headers, CallbackContext callbackContext) {
-        super(urlString, jsonObj, headers, callbackContext);
+    public CordovaHttpPostFormUrlEncoded(String urlString, String formUrlEncoded, Map<String, String> headers, CallbackContext callbackContext) {
+        super(urlString, formUrlEncoded, headers, callbackContext);
     }
 
     @Override
