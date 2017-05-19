@@ -9,9 +9,8 @@ import java.io.UnsupportedEncodingException;
 
 public class CordovaHttpHelpers {
 
-    public static Map<String, String> splitQuery(URL url) throws UnsupportedEncodingException {
+    public static Map<String, String> splitQuery(String query) throws UnsupportedEncodingException {
         Map<String, String> query_pairs = new LinkedHashMap<String, String>();
-        String query = url.getQuery();
         String[] pairs = query.split("&");
         for (String pair : pairs) {
             int idx = pair.indexOf("=");
