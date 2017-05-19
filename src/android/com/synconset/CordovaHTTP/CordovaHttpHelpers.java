@@ -2,19 +2,18 @@ package com.synconset;
 
 public class CordovaHttpHelpers {
 
-    static final Map<String, List<String>>splitQuery(URL url){
-        if(Strings.isNullOrEmpty(url.getQuery())){
-            return Collections.emptyMap();
+    public static Map<String, List<String>> splitQuery(URL url) throws UnsupportedEncodingException {
+        final Map<String, List<String>> query_pairs = new LinkedHashMap<String, List<String>>();
+        final String[] pairs = url.getQuery().split("&");
+        for (String pair : pairs) {
+            final int idx = pair.indexOf("=");
+            final String key = idx > 0 ? URLDecoder.decode(pair.substring(0, idx), "UTF-8") : pair;
+            if (!query_pairs.containsKey(key)) {
+                query_pairs.put(key, new LinkedList<String>());
+            }
+            final String value = idx > 0 && pair.length() > idx + 1 ? URLDecoder.decode(pair.substring(idx + 1), "UTF-8") : null;
+            query_pairs.get(key).add(value);
         }
-        return Arrays.stream(url.getQuery().split("&"))
-            .map(this::splitQueryParameter)
-            .collect(Collectors.groupingBy(SimpleImmutableEntry::getKey,LinkedHashMap::new,mapping(Map.Entry::getValue,toList())));
-    }
-
-    private SimpleImmutableEntry<String, String> splitQueryParameter(String it){
-        final int idx=it.indexOf("=");
-        final String key=idx>0?it.substring(0,idx):it;
-        final String value=idx>0&&it.length()>idx+1?it.substring(idx+1):null;
-        return new SimpleImmutableEntry<>(key,value);
+        return query_pairs;
     }
 }
