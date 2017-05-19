@@ -31,7 +31,8 @@ public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnab
             request.headers(this.getHeaders());
             request.acceptJson();
             request.contentType(HttpRequest.CONTENT_TYPE_FORM);
-            request.send(getFormUrlEncoded());
+            Map<String, String> payload = CordovaHttpHelpers.splitQuery(super.getFormUrlEncoded());
+            request.form(payload);
             int code = request.code();
             String body = request.body(CHARSET);
             JSONObject response = new JSONObject();
