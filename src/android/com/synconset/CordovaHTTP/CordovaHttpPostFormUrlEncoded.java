@@ -46,6 +46,8 @@ public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnab
                 response.put("error", body);
                 this.getCallbackContext().error(response);
             }
+        } catch (UnsupportedEncodingException e) {
+            this.respondWithError("There was an error with your request payload");
         } catch (JSONException e) {
             this.respondWithError("There was an error generating the response");
         }  catch (HttpRequestException e) {
