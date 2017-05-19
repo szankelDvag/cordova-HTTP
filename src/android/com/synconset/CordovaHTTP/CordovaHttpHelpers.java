@@ -1,5 +1,7 @@
 package com.synconset;
 
+import java.net.URLDecoder;
+
 public class CordovaHttpHelpers {
 
     public static Map<String, List<String>> splitQuery(URL url) throws UnsupportedEncodingException {
