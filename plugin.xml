@@ -2,7 +2,7 @@
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
   id="cordova-plugin-http"
-  version="1.1.1">
+  version="1.1.2">
 
     <name>SSL Pinning</name>
 
@@ -75,6 +75,7 @@
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpPost.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpHead.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpPostJson.java" target-dir="src/com/synconset" />
+        <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpPostFormUrlEncoded.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpUpload.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpDownload.java" target-dir="src/com/synconset" />
         <source-file src="src/android/com/synconset/CordovaHTTP/CordovaHttpPlugin.java" target-dir="src/com/synconset" />

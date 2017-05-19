@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.1.2
+- Added method for application/x-www-form-urlencoded content type
+
 ## v1.1.1
 - Fixed SSL Pinning not working for postJson method for ios
 - Fixed version number in plugin.xml
