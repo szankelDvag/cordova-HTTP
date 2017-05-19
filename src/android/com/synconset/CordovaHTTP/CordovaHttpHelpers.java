@@ -1,6 +1,6 @@
 package com.synconset;
 
-class CordovaHttpHelpers {
+public class CordovaHttpHelpers {
 
     static final Map<String, List<String>>splitQuery(URL url){
         if(Strings.isNullOrEmpty(url.getQuery())){
