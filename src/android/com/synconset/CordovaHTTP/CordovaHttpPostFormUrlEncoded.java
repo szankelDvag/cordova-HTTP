@@ -35,7 +35,7 @@ public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnab
             request.headers(this.getHeaders());
             request.acceptJson();
             request.contentType(HttpRequest.CONTENT_TYPE_FORM);
-            Map<String, String> payload = CordovaHttpHelpers.splitQuery(super.getFormUrlEncoded());
+            Map<String, String> payload = CordovaHttpHelpers.splitQuery(this.getFormUrlEncoded());
             System.out.println(request.toString());
             request.form(payload);
             int code = request.code();
@@ -50,16 +50,16 @@ public class CordovaHttpPostFormUrlEncoded extends CordovaHttp implements Runnab
                 this.getCallbackContext().error(response);
             }
         } catch (UnsupportedEncodingException e) {
-            this.respondWithError("There was an error with your request payload");
+            this.respondWithError(400, "There was an error with your request payload");
         } catch (JSONException e) {
-            this.respondWithError("There was an error generating the response");
+            this.respondWithError(500, "There was an error generating the response");
         }  catch (HttpRequestException e) {
             if (e.getCause() instanceof UnknownHostException) {
-                this.respondWithError(0, "The host could not be resolved");
+                this.respondWithError(404, "The host could not be resolved");
             } else if (e.getCause() instanceof SSLHandshakeException) {
-                this.respondWithError("SSL handshake failed");
+                this.respondWithError(406, "SSL handshake failed");
             } else {
-                this.respondWithError("There was an error with the request");
+                this.respondWithError(400, "There was an error with the request");
             }
         }
     }
