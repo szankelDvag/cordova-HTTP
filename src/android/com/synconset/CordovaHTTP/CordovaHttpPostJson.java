@@ -16,13 +16,13 @@ import android.util.Log;
 
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
- 
+
 public class CordovaHttpPostJson extends CordovaHttp implements Runnable {
-    
+
     public CordovaHttpPostJson(String urlString, JSONObject jsonObj, Map<String, String> headers, CallbackContext callbackContext) {
         super(urlString, jsonObj, headers, callbackContext);
     }
-    
+
     @Override
     public void run() {
         try {
@@ -44,14 +44,14 @@ public class CordovaHttpPostJson extends CordovaHttp implements Runnable {
                 this.getCallbackContext().error(response);
             }
         } catch (JSONException e) {
-            this.respondWithError("There was an error generating the response");
+            this.respondWithError(500, "There was an error generating the response");
         }  catch (HttpRequestException e) {
             if (e.getCause() instanceof UnknownHostException) {
-                this.respondWithError(0, "The host could not be resolved");
+                this.respondWithError(404, "The host could not be resolved");
             } else if (e.getCause() instanceof SSLHandshakeException) {
-                this.respondWithError("SSL handshake failed");
+                this.respondWithError(406, "SSL handshake failed");
             } else {
-                this.respondWithError("There was an error with the request");
+                this.respondWithError(400, "There was an error with the request");
             }
         }
     }
