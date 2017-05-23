@@ -78,13 +78,6 @@ public class CordovaHttpPlugin extends CordovaPlugin {
             HashMap<String, String> headersMap = this.getStringMapFromJSONObject(headers);
             CordovaHttpPostJson postJson = new CordovaHttpPostJson(urlString, jsonObj, headersMap, callbackContext);
             cordova.getThreadPool().execute(postJson);
-        } else if (action.equals("postFormUrlEncoded")) {
-            String urlString = args.getString(0);
-            String formUrlEncoded = args.getString(1);
-            JSONObject headers = args.getJSONObject(2);
-            HashMap<String, String> headersMap = this.getStringMapFromJSONObject(headers);
-            CordovaHttpPostFormUrlEncoded postFormUrlEncoded = new CordovaHttpPostFormUrlEncoded(urlString, formUrlEncoded, headersMap, callbackContext);
-            cordova.getThreadPool().execute(postFormUrlEncoded);
         } else if (action.equals("enableSSLPinning")) {
             try {
                 boolean enable = args.getBoolean(0);
@@ -145,12 +138,12 @@ public class CordovaHttpPlugin extends CordovaPlugin {
             // scan the www/certificates folder for .cer files as well
             files = assetManager.list("www/certificates");
             for (int i = 0; i < files.length; i++) {
-                index = files[i].lastIndexOf('.');
-                if (index != -1) {
-                    if (files[i].substring(index).equals(".cer")) {
-                        cerFiles.add("www/certificates/" + files[i]);
-                    }
+              index = files[i].lastIndexOf('.');
+              if (index != -1) {
+                if (files[i].substring(index).equals(".cer")) {
+                  cerFiles.add("www/certificates/" + files[i]);
                 }
+              }
             }
 
             for (int i = 0; i < cerFiles.size(); i++) {
